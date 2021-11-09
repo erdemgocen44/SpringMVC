@@ -11,3 +11,4 @@ public class SpringCrudApplication {
 	}
 
 }
+//jdbc:oracle:thin:@localhost:1521:xe
