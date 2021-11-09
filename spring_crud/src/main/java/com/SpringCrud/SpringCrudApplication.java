@@ -1,6 +1,4 @@
-package spring_crud;
-
-import javax.persistence.Entity;
+package com.SpringCrud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,4 +17,3 @@ public class SpringCrudApplication {
 	}
 
 }
-//jdbc:oracle:thin:@localhost:1521:xe
