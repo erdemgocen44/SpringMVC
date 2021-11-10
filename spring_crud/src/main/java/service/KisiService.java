@@ -35,4 +35,19 @@ public class KisiService {
 		return id + " id numarali kişi silindi";
 	}
 
+	// PUT
+	// PUT , kaynağın var olup olmadığını kontrol etmek içindir, ardından
+	// güncellemek ,
+	// aksi takdirde yeni kaynak oluşturmak içindir. PATCH her zaman sadece bir
+	// kaynağı güncellemek içindir.
+	// PUT için, id belirterek yazarız, bu id li kişi yoksa yenisini oluşturur
+	// “id”:77,
+	// “ad”: “xxx”,
+	// “soyad”: “ver”,
+	// “yas”: 66}
+
+	public Kisi kisiGuncelle(Kisi guncelKisi) {
+		return kisiRepository.save(guncelKisi);
+	}
+
 }
