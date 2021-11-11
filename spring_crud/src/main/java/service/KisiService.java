@@ -1,6 +1,8 @@
 package service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,11 @@ public class KisiService {
 		return id + " id numarali kişi silindi";
 	}
 
+	// id ile kisi getiren servis metotu
+	public Optional<Kisi> idIleKisiGetir(Integer id) {
+		return kisiRepository.findById(id);
+	}
+
 	// PUT
 	// PUT , kaynağın var olup olmadığını kontrol etmek içindir, ardından
 	// güncellemek ,
@@ -50,4 +57,24 @@ public class KisiService {
 		return kisiRepository.save(guncelKisi);
 	}
 
+	// PATCH İSLEMLERİ---id sini patch ederken tutturmanız lazım
+
+	public Kisi idIleKisiGüncelle(Integer id, Kisi updateKisi) {
+
+		Kisi eskiKisi = kisiRepository.findById(id)
+				.orElseThrow(() -> new IllegalStateException(id + " id li kisi bulunamadı"));
+
+		if (updateKisi.getAd() != null) {
+			eskiKisi.setAd(updateKisi.getAd());
+		}
+
+		if (updateKisi.getSoyad() != null) {
+			eskiKisi.setSoyad(updateKisi.getSoyad());
+		}
+		if (updateKisi.getYas() != 0) {
+			eskiKisi.setYas(updateKisi.getYas());
+		}
+		return kisiRepository.save(eskiKisi);
+
+	}
 }
